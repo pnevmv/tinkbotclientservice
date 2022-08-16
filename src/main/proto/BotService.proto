@@ -6,6 +6,7 @@ option java_multiple_files = true;
 
 service BotClient{
   rpc CreateBot(Token) returns (BotID);
+  rpc DeleteBot(BotID) returns (Success);
 }
 
 message Token{
@@ -16,3 +17,6 @@ message BotID{
   int64 BotID = 1;
 }
 
+message Success{
+  bool isDeleted = 1;
+}

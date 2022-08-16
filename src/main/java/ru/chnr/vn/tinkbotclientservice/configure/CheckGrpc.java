@@ -15,6 +15,9 @@ public class CheckGrpc {
     CommandLineRunner initDatabase(BotService botService) {
         return args -> {
             log.info("Bot id response: " + botService.createBot(228));
+            log.info("Bot is deleted " + botService.deleteBot(1));
+            log.info("Bot is deleted " + botService.deleteBot(10));
         };
+
     }
 }
