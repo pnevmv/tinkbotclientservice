@@ -1,4 +1,4 @@
-package ru.chnr.vn.tinkbotclientservice.controller;
+package ru.chnr.vn.tinkbotclientservice.services;
 
 import net.devh.boot.grpc.client.inject.GrpcClient;
 
@@ -14,7 +14,7 @@ public class BotService {
     private BotClientGrpc.BotClientBlockingStub botClientBlockingStub;
 
 
-    public long createBot(long t){
+    public long createBot(String t){
         Token token = Token
                 .newBuilder()
                 .setToken(t)
@@ -32,8 +32,9 @@ public class BotService {
     public boolean deleteBot(long id){
         boolean response = botClientBlockingStub.deleteBot(
                 BotID.newBuilder().setBotID(id).build()
-        ).getIsDeleted();
+        ).getValue();
 
+        System.out.println("deleted bot with id " + id + " " + response);
         return response;
     }
 }
